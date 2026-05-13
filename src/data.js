@@ -203,7 +203,22 @@ export const numbers = [
   { icon: '🎓', val: '6+',   lbl: 'Years of Experience' },
 ]
 
-// ── 8. LOADER TIPS (rotate during the loading screen) ──────────────
+// ── 8. CHEAT CODES ─────────────────────────────────────────────────
+// code   : sequence to type on keyboard (no spaces, uppercase)
+// msg    : notification shown when activated
+// icon   : emoji for the CheatSheet panel
+// desc   : description shown in CheatSheet panel
+// action : one of → 'terminal' | 'referral' | 'wanted' | 'skills' | 'stats' | 'nums'
+export const cheatCodes = [
+  { code: 'AIFIRST',  msg: 'AI-FIRST MODE ACTIVATED',  icon: '>_', desc: 'Open Live Terminal',    action: 'terminal', color: '#00E5FF' },
+  { code: 'GOTWORK',  msg: 'REFERRAL UNLOCKED',         icon: '🤝', desc: 'Open Referral Form',   action: 'referral', color: '#39FF14' },
+  { code: 'TOPGUN',   msg: '5-STAR WANTED LEVEL',       icon: '⭐', desc: '5★ Wanted Level',      action: 'wanted',   color: '#FF2200' },
+  { code: 'POWERUP',  msg: 'INFINITE AMMO LOADED',      icon: '⚡', desc: 'Unlock Skills Arsenal', action: 'skills',  color: '#8B00FF' },
+  { code: 'FASTLANE', msg: 'SPEED BOOST ENGAGED',       icon: '🚀', desc: 'Jump to Kill Count',   action: 'stats',    color: '#FF6B00' },
+  { code: 'GODMODE',  msg: 'INVINCIBILITY ON',          icon: '👑', desc: 'Infinite Stats',        action: 'nums',    color: '#FFE600' },
+]
+
+// ── 9. LOADER TIPS (rotate during the loading screen) ──────────────
 export const loaderTips = [
   'AI-powered platform reduced support tickets by ~95% for 40K+ users',
   'Architected 15+ microfrontends with Module Federation at Papaya Global',

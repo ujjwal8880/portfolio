@@ -1,14 +1,5 @@
 import { useState, useEffect } from 'react'
-import { personal } from '../data'
-
-const CODES = [
-  { code: 'AIFIRST',  desc: 'Open Live Terminal',     color: '#00E5FF', icon: '>_' },
-  { code: 'GOTWORK',  desc: 'Open Referral Form',     color: '#39FF14', icon: '🤝' },
-  { code: 'TOPGUN',   desc: '5★ Wanted Level',        color: '#FF2200', icon: '⭐' },
-  { code: 'POWERUP',  desc: 'Unlock Skills Arsenal',  color: '#8B00FF', icon: '⚡' },
-  { code: 'FASTLANE', desc: 'Jump to Kill Count',     color: '#FF6B00', icon: '🚀' },
-  { code: 'GODMODE',  desc: 'Infinite Stats',         color: '#FFE600', icon: '👑' },
-]
+import { personal, cheatCodes } from '../data'
 
 const SHORTCUTS = [
   { key: 'TAB',              desc: 'Open Weapon Wheel' },
@@ -63,7 +54,7 @@ export default function CheatSheet({ open, onClose }) {
               TYPE ON KEYBOARD (no prefix needed)
             </div>
             <div className="space-y-2">
-              {CODES.map(({ code, desc, color, icon }) => (
+              {cheatCodes.map(({ code, desc, color, icon }) => (
                 <div key={code}
                   className="flex items-center gap-4 px-4 py-3"
                   style={{ background: 'rgba(255,255,255,.03)', border: `1px solid ${color}22` }}

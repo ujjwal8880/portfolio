@@ -19,7 +19,7 @@ import Terminal, { toggleTerminal } from './components/Terminal';
 import MissionTransition, { triggerMission } from './components/MissionTransition';
 import CheatSheet from './components/CheatSheet';
 import { sound, unlockAudio } from './utils/sound';
-import { personal } from './data';
+import { personal, cheatCodes } from './data';
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
@@ -128,43 +128,25 @@ export default function App() {
     return () => window.removeEventListener('keydown', h);
   }, []);
 
-  // GTA-style cheat codes
+  // GTA-style cheat codes — configured in src/data.js
   useEffect(() => {
-    const CODES = {
-      AIFIRST: () => {
-        showCheat('AI-FIRST MODE ACTIVATED');
-        toggleTerminal();
-      },
-      GOTWORK: () => {
-        showCheat('REFERRAL UNLOCKED');
-        setReferral(true);
-        sound.open();
-      },
-      TOPGUN: () => {
-        showCheat('5-STAR WANTED LEVEL');
-        setWanted(true);
-      },
-      POWERUP: () => {
-        showCheat('INFINITE AMMO LOADED');
-        fire('skills');
-      },
-      FASTLANE: () => {
-        showCheat('SPEED BOOST ENGAGED');
-        document.querySelector('#nums')?.scrollIntoView({ behavior: 'smooth' });
-      },
-      GODMODE: () => {
-        showCheat('INVINCIBILITY ON');
-        fire('nums');
-      },
+    const actionMap = {
+      terminal: () => toggleTerminal(),
+      referral: () => { setReferral(true); sound.open() },
+      wanted:   () => setWanted(true),
+      skills:   () => fire('skills'),
+      stats:    () => document.querySelector('#nums')?.scrollIntoView({ behavior: 'smooth' }),
+      nums:     () => fire('nums'),
     };
     let buf = '';
     const h = (e) => {
       if (e.key.length !== 1 || e.metaKey || e.ctrlKey) return;
       buf = (buf + e.key.toUpperCase()).slice(-10);
-      for (const [code, fn] of Object.entries(CODES)) {
+      for (const { code, msg, action } of cheatCodes) {
         if (buf.endsWith(code)) {
           buf = '';
-          fn();
+          showCheat(msg);
+          actionMap[action]?.();
           break;
         }
       }
