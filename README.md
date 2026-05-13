@@ -190,10 +190,14 @@ Then enable GitHub Pages in your repo settings → branch: `gh-pages`.
 
 ### 7. Free custom domain (optional)
 
-Get a free `yourname.is-a.dev` subdomain — no credit card needed:
+Get a free `yourname.is-a.dev` subdomain — no credit card needed.
 
-1. Fork [is-a-dev/register](https://github.com/is-a-dev/register)
-2. Create `domains/yourname.json`:
+> **Note:** [is-a-dev/register](https://github.com/is-a-dev/register) is a separate community-run repo — not this portfolio. You submit a PR there to claim your subdomain. This is standard GitHub PR workflow: you fork their repo, add one JSON file, and open a PR. Once merged, your subdomain goes live.
+
+**Steps:**
+
+1. Fork [is-a-dev/register](https://github.com/is-a-dev/register) (their repo, not this one)
+2. In your fork, create `domains/yourname.json`:
 ```json
 {
   "$schema": "../DOMAIN_SCHEMA.json",
@@ -203,13 +207,27 @@ Get a free `yourname.is-a.dev` subdomain — no credit card needed:
     "username": "yourusername",
     "email": "you@example.com"
   },
-  "record": {
+  "records": {
     "CNAME": "cname.vercel-dns.com"
   }
 }
 ```
-3. Submit a PR — maintainers usually merge within 24h.
-4. Add the domain to your Vercel project: **Project Settings → Domains**.
+3. Open a PR from your fork → `is-a-dev/register` — maintainers usually merge within 24h.
+4. Once merged, add `yourname.is-a.dev` to your Vercel project: **Project Settings → Domains**.
+
+**Vercel domain ownership error?** If Vercel says the domain is linked to another account, create a second file `domains/_vercel.yourname.json` in the same fork/PR:
+```json
+{
+  "owner": {
+    "username": "yourusername",
+    "email": "you@example.com"
+  },
+  "records": {
+    "TXT": "vc-domain-verify=..."
+  }
+}
+```
+Get the `vc-domain-verify=...` value from **Vercel → Project Settings → Domains** when you try to add the domain.
 
 ### 8. Analytics (already included)
 
