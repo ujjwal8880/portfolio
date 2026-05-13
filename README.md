@@ -193,7 +193,7 @@ src/
 
 ## Tech stack
 
-- **React 18** + **Vite**
+- **React 19** + **Vite**
 - **Tailwind CSS** — utility styling
 - **Lenis** — smooth scroll
 - **Web Audio API** — procedural sounds (no audio files)
