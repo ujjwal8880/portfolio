@@ -1,7 +1,9 @@
 # ⚡ GTA 6-Style Portfolio — Fork & Make It Yours
 
-A cinematic, GTA 6-themed developer portfolio built with **React + Vite + Tailwind CSS**.  
+A cinematic, GTA 6-themed developer portfolio built with **React 19 + Vite + Tailwind CSS**.  
 Designed to go viral on LinkedIn. Every piece of personal content lives in **one file**.
+
+**Live demo:** https://ujjwalsinghal.vercel.app
 
 ---
 
@@ -22,6 +24,7 @@ Designed to go viral on LinkedIn. Every piece of personal content lives in **one
 | 🔊 Web Audio | Procedural sounds — no audio files |
 | 🖱️ Custom cursor | Spring-physics cursor with click ripple (desktop) |
 | 📱 Mobile-ready | Full responsive, touch support, mobile NPC chat |
+| 📊 Analytics | Vercel Web Analytics + Speed Insights built in |
 
 ---
 
@@ -115,7 +118,13 @@ export const numbers = [
   // ...
 ]
 
-// ── 8. LOADER TIPS ────────────────────────────────
+// ── 8. CHEAT CODES (fully configurable) ───────────
+export const cheatCodes = [
+  { code: 'AIFIRST', msg: 'AI-FIRST MODE ACTIVATED', icon: '>_', desc: 'Open Live Terminal', action: 'terminal', color: '#00E5FF' },
+  // action: 'terminal' | 'referral' | 'wanted' | 'skills' | 'stats' | 'nums'
+]
+
+// ── 9. LOADER TIPS ────────────────────────────────
 export const loaderTips = [
   'Your achievement #1',
   'Your achievement #2',
@@ -149,7 +158,8 @@ vercel login
 vercel --prod
 ```
 
-Vercel auto-detects Vite. Build command: `npm run build`. Output dir: `dist`. Done.
+Vercel auto-detects Vite. Build command: `npm run build`. Output dir: `dist`. Done.  
+Every `git push` to `main` after that triggers a new production deploy automatically.
 
 #### Option B — Vercel Dashboard (no CLI)
 
@@ -157,8 +167,6 @@ Vercel auto-detects Vite. Build command: `npm run build`. Output dir: `dist`. Do
 2. Go to [vercel.com/new](https://vercel.com/new) → **Import Git Repository**.
 3. Select your fork — Vercel detects Vite automatically.
 4. Click **Deploy**. No config needed.
-
-Every `git push` after that triggers a new production deploy automatically.
 
 #### Option C — Netlify
 
@@ -180,6 +188,33 @@ npx gh-pages -d dist
 
 Then enable GitHub Pages in your repo settings → branch: `gh-pages`.
 
+### 7. Free custom domain (optional)
+
+Get a free `yourname.is-a.dev` subdomain — no credit card needed:
+
+1. Fork [is-a-dev/register](https://github.com/is-a-dev/register)
+2. Create `domains/yourname.json`:
+```json
+{
+  "$schema": "../DOMAIN_SCHEMA.json",
+  "description": "Your portfolio",
+  "repo": "https://github.com/yourusername/portfolio",
+  "owner": {
+    "username": "yourusername",
+    "email": "you@example.com"
+  },
+  "record": {
+    "CNAME": "cname.vercel-dns.com"
+  }
+}
+```
+3. Submit a PR — maintainers usually merge within 24h.
+4. Add the domain to your Vercel project: **Project Settings → Domains**.
+
+### 8. Analytics (already included)
+
+`@vercel/analytics` and `@vercel/speed-insights` are wired up in `src/main.jsx` and activate automatically on Vercel deployments. No extra config needed — just check your Vercel dashboard for data after deploying.
+
 ---
 
 ## Project structure
@@ -187,6 +222,7 @@ Then enable GitHub Pages in your repo settings → branch: `gh-pages`.
 ```
 src/
 ├── data.js              ← 🔥 ALL personal content lives here
+├── main.jsx             ← entry point + Analytics + SpeedInsights
 ├── App.jsx              ← root, wires everything together
 ├── index.css            ← global styles + keyframe animations
 ├── components/
@@ -205,7 +241,7 @@ src/
 │   │   ├── responses.js ← ✏️ update with your own story
 │   │   └── QuickReplies.jsx
 │   ├── AchievementToast.jsx
-│   ├── CheatSheet.jsx
+│   ├── CheatSheet.jsx   ← reads cheat codes from data.js
 │   ├── WantedScreen.jsx ← Konami easter egg
 │   ├── ReferralModal.jsx
 │   ├── MissionTransition.jsx
@@ -228,6 +264,8 @@ src/
 - **React 19** + **Vite**
 - **Tailwind CSS** — utility styling
 - **Lenis** — smooth scroll
+- **@vercel/analytics** — page views & visitor stats
+- **@vercel/speed-insights** — Core Web Vitals monitoring
 - **Web Audio API** — procedural sounds (no audio files)
 - **Canvas API** — rain + particle effects
 - **IntersectionObserver** — scroll-triggered animations
