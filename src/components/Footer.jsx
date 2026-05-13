@@ -1,8 +1,10 @@
+import { personal } from '../data'
+
 export default function Footer({ onReferral, onCvDownload }) {
   return (
     <footer className="bg-black py-14 px-8 text-center border-t border-white/4">
       <div className="font-bebas text-[30px] tracking-[6px] gta-gradient-text mb-6">
-        UJJWAL SINGHAL
+        {personal.firstName} {personal.lastName}
       </div>
 
       {/* CTA row */}
@@ -23,12 +25,16 @@ export default function Footer({ onReferral, onCvDownload }) {
       </div>
 
       <p className="font-mono text-[10px] tracking-[2px] text-white/18 leading-[1.9]">
-        B.TECH COMPUTER SCIENCE · LOVELY PROFESSIONAL UNIVERSITY · 2016 – 2020<br />
+        {personal.degree} · {personal.college} · {personal.gradYear}<br />
         BUILT WITH AI, CAFFEINE &amp; AN OBSESSION FOR CRAFT<br />
         <br />
         <span className="text-gta-cyan/50">✦ PORTFOLIO CRAFTED WITH CLAUDE BY ANTHROPIC ✦</span><br />
+        <a href={personal.portfolioRepo} target="_blank" rel="noopener noreferrer"
+          className="text-gta-cyan/40 hover:text-gta-cyan transition-colors">
+          ⑂ FORK THIS PORTFOLIO
+        </a><br />
         <br />
-        © 2026 UJJWAL SINGHAL · NOT AFFILIATED WITH ROCKSTAR GAMES™
+        © 2026 {personal.firstName} {personal.lastName} · NOT AFFILIATED WITH ROCKSTAR GAMES™
       </p>
     </footer>
   )

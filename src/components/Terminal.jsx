@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
+import { personal } from '../data'
+
+const handle = personal.firstName.toLowerCase()
 
 const SEQUENCE = [
-  { t: 'cmd',  v: 'ssh ujjwal@portfolio.io --verbose' },
-  { t: 'ok',   v: '✓  Auth handshake complete · AI-FIRST SDE 2' },
+  { t: 'cmd',  v: `ssh ${handle}@portfolio.io --verbose` },
+  { t: 'ok',   v: `✓  Auth handshake complete · ${personal.tagline}` },
   { t: 'ok',   v: '✓  Session: ' + new Date().getFullYear() + ' · Vice City, India' },
   { t: 'gap' },
   { t: 'cmd',  v: 'system status --all' },
@@ -28,10 +31,10 @@ const SEQUENCE = [
   { t: 'git',  v: 'f1a4b5e arch: ship 15-MFE module federation · zero downtime' },
   { t: 'git',  v: 'b9c2a1d chore: Angular → React migration · 3 orgs · no outage' },
   { t: 'gap' },
-  { t: 'cmd',  v: 'ujjwal --contact' },
-  { t: 'ok',   v: '  📧  ujjwalsinghal19@gmail.com' },
-  { t: 'ok',   v: '  🔗  linkedin.com/in/ujjwalsinghal' },
-  { t: 'ok',   v: '  📄  /Ujjwal_Singhal_Resume.pdf  ← download CV above' },
+  { t: 'cmd',  v: `${handle} --contact` },
+  { t: 'ok',   v: `  📧  ${personal.email}` },
+  { t: 'ok',   v: `  🔗  linkedin.com/in/${personal.linkedinHandle}` },
+  { t: 'ok',   v: `  📄  ${personal.cvFile}  ← download CV above` },
   { t: 'gap' },
   { t: 'done', v: '> █' },
 ]

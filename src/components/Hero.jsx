@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { heroStats } from '../data'
+import { heroStats, personal } from '../data'
 import ParticleField from './ParticleField'
 import RainCanvas from './RainCanvas'
 
@@ -98,7 +98,7 @@ export default function Hero({ onView }) {
         <p className="font-mono text-gta-cyan text-[11px] tracking-[7px] mb-4 animate-fade-up"
           style={{ animationDelay: '.4s', textShadow: '0 0 12px #00E5FF' }}
         >
-          // FRONTEND ENGINEER · SDE 2 · 6+ YEARS XP
+          {personal.heroCaption}
         </p>
 
         {/* Glitch title */}
@@ -106,28 +106,28 @@ export default function Hero({ onView }) {
           <h1 className="font-bebas gta-gradient-text animate-name-pulse"
             style={{ fontSize: 'clamp(58px, 13vw, 148px)', lineHeight: .82, letterSpacing: 5 }}
           >
-            UJJWAL<br />SINGHAL
+            {personal.firstName}<br />{personal.lastName}
           </h1>
           <span className="font-bebas absolute inset-0 text-gta-cyan animate-glitch1 pointer-events-none opacity-0"
             style={{ fontSize: 'clamp(58px, 13vw, 148px)', lineHeight: .82, letterSpacing: 5 }}
             aria-hidden="true"
-          >UJJWAL<br />SINGHAL</span>
+          >{personal.firstName}<br />{personal.lastName}</span>
           <span className="font-bebas absolute inset-0 text-gta-pink animate-glitch2 pointer-events-none opacity-0"
             style={{ fontSize: 'clamp(58px, 13vw, 148px)', lineHeight: .82, letterSpacing: 5 }}
             aria-hidden="true"
-          >UJJWAL<br />SINGHAL</span>
+          >{personal.firstName}<br />{personal.lastName}</span>
         </div>
 
         <p className="font-rajdhani font-light text-white/80 mt-2 md:mt-3 animate-fade-up"
           style={{ fontSize: 'clamp(12px, 3vw, 22px)', letterSpacing: 5, animationDelay: '.8s' }}
         >
-          AI-FIRST FRONTEND ENGINEER
+          {personal.tagline}
         </p>
 
         <div className="inline-block mt-3 md:mt-5 px-4 md:px-5 py-[6px] md:py-2 border border-gta-cyan font-mono text-[9px] md:text-[11px] tracking-[3px] md:tracking-[4px] text-gta-cyan animate-border-glow animate-fade-up"
           style={{ animationDelay: '1s', background: 'rgba(0,229,255,.07)', textShadow: '0 0 8px #00E5FF' }}
         >
-          ⚡ AI-FIRST · DSA-SHARP · SCALE-PROVEN
+          {personal.badge}
         </div>
 
         {/* Numbers — 2×2 grid on mobile, single row on desktop */}

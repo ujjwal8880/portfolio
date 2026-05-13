@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { personal } from '../data'
 
 export default function HudNav({ onCheatSheet }) {
   const [open, setOpen] = useState(false)
@@ -17,7 +18,7 @@ export default function HudNav({ onCheatSheet }) {
         style={{ background: 'linear-gradient(180deg,rgba(0,0,0,.85) 0%,transparent 100%)', backdropFilter: 'blur(6px)' }}
       >
         <a href="#hero" className="font-bebas text-xl gta-pink-text" style={{ letterSpacing: 4 }}>
-          US · SDE2
+          {personal.initials} · {personal.roleShort}
         </a>
 
         {/* Desktop links */}

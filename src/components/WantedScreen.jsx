@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { sound } from '../utils/sound'
+import { personal } from '../data'
 
 export default function WantedScreen({ onDismiss }) {
   const [phase, setPhase] = useState('flash')
@@ -73,7 +74,7 @@ export default function WantedScreen({ onDismiss }) {
         <div className="text-center max-w-lg mx-5 animate-fade-up space-y-5">
           <div className="border border-red-500/30 p-7" style={{ background: 'rgba(255,0,0,.05)', backdropFilter: 'blur(8px)' }}>
             <div className="font-mono text-[9px] tracking-[4px] text-red-400 mb-3">◉ CLASSIFIED INTEL</div>
-            <div className="font-bebas text-[32px] tracking-[5px] text-white mb-3">HIRE UJJWAL SINGHAL</div>
+            <div className="font-bebas text-[32px] tracking-[5px] text-white mb-3">HIRE {personal.firstName} {personal.lastName}</div>
             <div className="font-rajdhani text-[16px] text-white/70 leading-[1.7]">
               Doing so will instantly clear your wanted level<br />
               and grant your team +9999 to performance stats.<br />

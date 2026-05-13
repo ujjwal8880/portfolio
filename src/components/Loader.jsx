@@ -1,17 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-
-const TIPS = [
-  'AI-powered platform reduced support tickets by ~95% for 40K+ users',
-  'Architected 15+ microfrontends with Module Federation at Papaya Global',
-  'Built systems serving 1M+ daily users at PharmEasy',
-  'Published open-source @papayaglobal/react-event-bus on npm',
-  'Migrated entire orgs from Angular to React — twice',
-  'Reduced page load time by ~25% through deep performance engineering',
-  'Uses AI tools every single day to ship 10× faster',
-  'DSA practitioner — algorithmic thinking shapes architecture decisions',
-  'Real-time chat system — 10K+ messages, zero rendering lag',
-  '6+ years growing from intern → SDE 2 at top product companies',
-]
+import { personal, loaderTips as TIPS } from '../data'
 
 export default function Loader({ onDone }) {
   const [progress, setProgress] = useState(0)
@@ -79,11 +67,11 @@ export default function Loader({ onDone }) {
           className="font-bebas gta-gradient-text animate-name-pulse"
           style={{ fontSize: 'clamp(56px, 13vw, 118px)', lineHeight: 0.85, letterSpacing: 6 }}
         >
-          UJJWAL<br />SINGHAL
+          {personal.firstName}<br />{personal.lastName}
         </h1>
 
         <p className="font-rajdhani font-light text-white/55 mt-2 mb-12" style={{ letterSpacing: 7, fontSize: 13 }}>
-          FRONTEND ENGINEER · SDE 2 · AI-FIRST DEVELOPER
+          {personal.role.toUpperCase()} · AI-FIRST DEVELOPER
         </p>
 
         <div className="flex justify-between font-mono text-[10px] tracking-[3px] text-white/35 mb-2">

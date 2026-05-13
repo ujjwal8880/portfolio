@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { personal } from '../data'
 
 const CODES = [
   { code: 'AIFIRST',  desc: 'Open Live Terminal',     color: '#00E5FF', icon: '>_' },
@@ -103,7 +104,21 @@ export default function CheatSheet({ open, onClose }) {
             </div>
           </div>
 
-          <div className="font-mono text-[8px] tracking-[3px] text-white/18 text-center pt-1">
+          <div className="h-px bg-white/8" />
+
+          {/* Fork link */}
+          <div className="flex items-center justify-center gap-3">
+            <a href={personal.portfolioRepo} target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 font-mono text-[10px] tracking-[3px] text-gta-cyan/70 hover:text-gta-cyan transition-colors"
+            >
+              <span>⑂</span>
+              <span>FORK THIS PORTFOLIO</span>
+            </a>
+            <span className="text-white/15">·</span>
+            <span className="font-mono text-[9px] text-white/25">github.com/{personal.githubHandle}/portfolio</span>
+          </div>
+
+          <div className="font-mono text-[8px] tracking-[3px] text-white/18 text-center">
             CLICK OUTSIDE OR PRESS ESC TO CLOSE
           </div>
         </div>
