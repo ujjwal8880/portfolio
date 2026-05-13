@@ -141,12 +141,44 @@ Edit `index.html` line 6:
 
 ### 6. Deploy
 
+#### Option A — Vercel CLI (recommended)
+
 ```bash
-npm run build   # outputs to /dist
+npm install -g vercel
+vercel login
+vercel --prod
 ```
 
-Deploy the `/dist` folder to **Vercel**, **Netlify**, or **GitHub Pages**.  
-Vercel one-click: connect your repo → it auto-detects Vite → done.
+Vercel auto-detects Vite. Build command: `npm run build`. Output dir: `dist`. Done.
+
+#### Option B — Vercel Dashboard (no CLI)
+
+1. Push your fork to GitHub.
+2. Go to [vercel.com/new](https://vercel.com/new) → **Import Git Repository**.
+3. Select your fork — Vercel detects Vite automatically.
+4. Click **Deploy**. No config needed.
+
+Every `git push` after that triggers a new production deploy automatically.
+
+#### Option C — Netlify
+
+```bash
+npm run build
+```
+
+Drag the `/dist` folder to [app.netlify.com/drop](https://app.netlify.com/drop), or connect your repo and set:
+- Build command: `npm run build`
+- Publish directory: `dist`
+
+#### Option D — GitHub Pages
+
+```bash
+npm install -D gh-pages
+npm run build
+npx gh-pages -d dist
+```
+
+Then enable GitHub Pages in your repo settings → branch: `gh-pages`.
 
 ---
 
